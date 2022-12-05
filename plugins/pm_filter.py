@@ -499,6 +499,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f_caption
         if f_caption is None:
             f_caption = f"{files.file_name}"
+        buttons = [[
+            InlineKeyboardButton('⭕️𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻⭕️', url='https://t.me/tvseriezzz_update')
+         ]]
         try:
             if AUTH_CHANNEL and not await is_subscribed(client, query):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
@@ -534,6 +537,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f_caption
         if f_caption is None:
             f_caption = f"{files.file_name}"
+        buttons = [[
+            InlineKeyboardButton('⭕️𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻⭕️', url='https://t.me/tvseriezzz_update')
+         ]]
 
         try:
             if AUTH_CHANNEL and not await is_subscribed(client, query):
@@ -577,6 +583,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f_caption = f_caption
         if f_caption is None:
             f_caption = f"{title}"
+        buttons = [[
+            InlineKeyboardButton('⭕️𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻⭕️', url='https://t.me/tvseriezzz_update')
+         ]]
         await query.answer()
         await client.send_cached_media(
             chat_id=query.from_user.id,
@@ -1475,9 +1484,15 @@ async def pm_spoll_choker(msg):
     g_s += await search_gagala(msg.text)
     gs_parsed = []
     if not g_s:
-        k = await msg.reply("I couldn't find any movie in that name.")
-        await asyncio.sleep(8)
+        btn = [[
+            InlineKeyboardButton('📕 ɪɴsᴛʀᴜᴄᴛɪᴏɴ 📕', callback_data='tipss')
+            ],[   
+            InlineKeyboardButton('🔍 ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ 🔍', url=f'https://google.com/search?q={msg.text.replace(" ", "+")}')
+        ]]        
+        k=await msg.reply("<b>𝖲ᴏʀʀʏ 𝖭ᴏ 𝖥ɪʟᴇ𝗌 𝖶ᴇʀᴇ 𝖥ᴏᴜɴᴅ.\n\n𝖢ʜᴇᴄᴋ 𝖸ᴏᴜʀ 𝖲ᴘᴇʟʟɪɴɢ ɪɴ 𝖦ᴏᴏɢʟᴇ ᴀɴᴅ 𝖳ʀʏ 𝖠ɢᴀɪɴ. ♻️\n\n𝖱ᴇᴀᴅ 𝖨ɴ𝗌ᴛʀᴜᴄᴛɪᴏɴ𝗌 ғᴏʀ ʙᴇᴛᴛᴇʀ 𝖱ᴇ𝗌ᴜʟᴛ𝗌 👇🏻</b>", reply_markup=InlineKeyboardMarkup(btn))    
+        await asyncio.sleep(20)
         await k.delete()
+        await msg.delete()
         return
     regex = re.compile(r".*(imdb|wikipedia).*", re.IGNORECASE)  # look for imdb / wiki results
     gs = list(filter(regex.match, g_s))
@@ -1504,9 +1519,15 @@ async def pm_spoll_choker(msg):
     movielist += [(re.sub(r'(\-|\(|\)|_)', '', i, flags=re.IGNORECASE)).strip() for i in gs_parsed]
     movielist = list(dict.fromkeys(movielist))  # removing duplicates
     if not movielist:
-        k = await msg.reply("I couldn't find anything related to that. Check your spelling")
-        await asyncio.sleep(8)
+        btn = [[
+            InlineKeyboardButton('📕 ɪɴsᴛʀᴜᴄᴛɪᴏɴ 📕', callback_data='tipss')
+            ],[   
+            InlineKeyboardButton('🔍 ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ 🔍', url=f'https://google.com/search?q={msg.text.replace(" ", "+")}')
+        ]]        
+        k=await msg.reply("<b>𝖲ᴏʀʀʏ 𝖭ᴏ 𝖥ɪʟᴇ𝗌 𝖶ᴇʀᴇ 𝖥ᴏᴜɴᴅ.\n\n𝖢ʜᴇᴄᴋ 𝖸ᴏᴜʀ 𝖲ᴘᴇʟʟɪɴɢ ɪɴ 𝖦ᴏᴏɢʟᴇ ᴀɴᴅ 𝖳ʀʏ 𝖠ɢᴀɪɴ. ♻️\n\n𝖱ᴇᴀᴅ 𝖨ɴ𝗌ᴛʀᴜᴄᴛɪᴏɴ𝗌 ғᴏʀ ʙᴇᴛᴛᴇʀ 𝖱ᴇ𝗌ᴜʟᴛ𝗌 👇🏻</b>", reply_markup=InlineKeyboardMarkup(btn))    
+        await asyncio.sleep(20)
         await k.delete()
+        await msg.delete()
         return
     PM_SPELL_CHECK[msg.id] = movielist
     btn = [[InlineKeyboardButton(text=movie.strip(), callback_data=f"pmspolling#{user}#{k}")] for k, movie in enumerate(movielist)]
@@ -1522,10 +1543,16 @@ async def advantage_spell_chok(msg):
     g_s = await search_gagala(query)
     g_s += await search_gagala(msg.text)
     gs_parsed = []
-    if not g_s:
-        k = await msg.reply("I couldn't find any movie in that name.")
-        await asyncio.sleep(8)
+    if not movielist:
+        btn = [[
+            InlineKeyboardButton('📕 ɪɴsᴛʀᴜᴄᴛɪᴏɴ 📕', callback_data='tipss')
+            ],[   
+            InlineKeyboardButton('🔍 ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ 🔍', url=f'https://google.com/search?q={msg.text.replace(" ", "+")}')
+        ]]        
+        k=await msg.reply("<b>𝖲ᴏʀʀʏ 𝖭ᴏ 𝖥ɪʟᴇ𝗌 𝖶ᴇʀᴇ 𝖥ᴏᴜɴᴅ.\n\n𝖢ʜᴇᴄᴋ 𝖸ᴏᴜʀ 𝖲ᴘᴇʟʟɪɴɢ ɪɴ 𝖦ᴏᴏɢʟᴇ ᴀɴᴅ 𝖳ʀʏ 𝖠ɢᴀɪɴ. ♻️\n\n𝖱ᴇᴀᴅ 𝖨ɴ𝗌ᴛʀᴜᴄᴛɪᴏɴ𝗌 ғᴏʀ ʙᴇᴛᴛᴇʀ 𝖱ᴇ𝗌ᴜʟᴛ𝗌 👇🏻</b>", reply_markup=InlineKeyboardMarkup(btn))    
+        await asyncio.sleep(20)
         await k.delete()
+        await msg.delete()
         return
     regex = re.compile(r".*(imdb|wikipedia).*", re.IGNORECASE)  # look for imdb / wiki results
     gs = list(filter(regex.match, g_s))
@@ -1552,9 +1579,15 @@ async def advantage_spell_chok(msg):
     movielist += [(re.sub(r'(\-|\(|\)|_)', '', i, flags=re.IGNORECASE)).strip() for i in gs_parsed]
     movielist = list(dict.fromkeys(movielist))  # removing duplicates
     if not movielist:
-        k = await msg.reply("I couldn't find anything related to that. Check your spelling")
-        await asyncio.sleep(8)
+        btn = [[
+            InlineKeyboardButton('📕 ɪɴsᴛʀᴜᴄᴛɪᴏɴ 📕', callback_data='tipss')
+            ],[   
+            InlineKeyboardButton('🔍 ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ 🔍', url=f'https://google.com/search?q={msg.text.replace(" ", "+")}')
+        ]]        
+        k=await msg.reply("<b>𝖲ᴏʀʀʏ 𝖭ᴏ 𝖥ɪʟᴇ𝗌 𝖶ᴇʀᴇ 𝖥ᴏᴜɴᴅ.\n\n𝖢ʜᴇᴄᴋ 𝖸ᴏᴜʀ 𝖲ᴘᴇʟʟɪɴɢ ɪɴ 𝖦ᴏᴏɢʟᴇ ᴀɴᴅ 𝖳ʀʏ 𝖠ɢᴀɪɴ. ♻️\n\n𝖱ᴇᴀᴅ 𝖨ɴ𝗌ᴛʀᴜᴄᴛɪᴏɴ𝗌 ғᴏʀ ʙᴇᴛᴛᴇʀ 𝖱ᴇ𝗌ᴜʟᴛ𝗌 👇🏻</b>", reply_markup=InlineKeyboardMarkup(btn))    
+        await asyncio.sleep(20)
         await k.delete()
+        await msg.delete()
         return
     SPELL_CHECK[msg.id] = movielist
     btn = [[
