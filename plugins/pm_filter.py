@@ -1547,7 +1547,7 @@ async def advantage_spell_chok(msg):
     g_s = await search_gagala(query)
     g_s += await search_gagala(msg.text)
     gs_parsed = []
-    if not movielist:
+    if not g_s:
         btn = [[
             InlineKeyboardButton('📕 ɪɴsᴛʀᴜᴄᴛɪᴏɴ 📕', callback_data='tipss')
             ],[   
