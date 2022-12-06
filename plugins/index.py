@@ -66,7 +66,7 @@ async def send_for_index(bot, message):
     else:
         return
     try:
-        try: await client.get_chat(chat_id)
+        try: await bot.get_chat(chat_id)
         except Exception as e:
             return await message.reply(f"Error : `{e}`")
     except ChannelInvalid:
