@@ -1,14 +1,12 @@
-from aiohttp import web as webserver
+from aiohttp import web
 
-routes = webserver.RouteTableDef()
-
-async def bot_run():
-    _app = web.Application(client_max_size=30000000)
-    _app.add_routes(routes)
-    return _app
+routes = web.RouteTableDef()
 
 @routes.get("/", allow_head=True)
 async def root_route_handler(request):
-    return webserver.json_response("Mo_Tech_YT")
+    return web.json_response("Mᴋɴ Bᴏᴛᴢ")
 
-
+async def web_server():
+    web_app = web.Application(client_max_size=30000000)
+    web_app.add_routes(routes)
+    return web_app
