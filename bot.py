@@ -11,7 +11,7 @@ from pyrogram import types
 from datetime import datetime
 from pytz import timezone
 from pyrogram.errors import BadRequest, Unauthorized
-from plugins.__init__ import webserver
+from plugins.init import web_server
 from aiohttp import web
 
 # Get logging configurations
