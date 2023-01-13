@@ -1,4 +1,5 @@
 git+https://github.com/MKN-BOTZ/pyrogram 
 git+https://github.com/cinemagoer/cinemagoer       
 tgcrypto
+python-dotenv
 
