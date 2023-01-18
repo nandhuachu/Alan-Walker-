@@ -47,7 +47,7 @@ class script(object):
 
 ⪼ 𝐄𝐱𝐚𝐦𝐩𝐥𝐞 ›
 
-<code>/batch https://t.me/tvseriezzz_update https://t.me/tvseriezzz_update</code>
+<code>/batch https://t.me/tvseriezzz_updates https://t.me/tvseriezzz_updates</code>
 
 ©️ MᴀɪɴᴛᴀɪɴᴇD Bʏ : <a href='https://t.me/tvseriezzz_groupz'>♠️ 𝑨𝒍𝒍 𝑰𝒏 𝑶𝒏𝒆 𝑮𝒓𝒐𝒖𝒑 🎬</a>"""
     
