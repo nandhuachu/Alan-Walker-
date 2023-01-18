@@ -1,7 +1,7 @@
 {
-    "name": "PROFESSOR-BOT",
+    "name": "Alan-Walker",
     "description": "the telegram Autofilter bot",
-    "logo": "https://graph.org/file/b7e8484f6395a180b6380.jpg",
+    "logo": "https://te.legra.ph/file/4e07ea0af542b38215778.jpg",
     "stack": "container",
     "keywords": [
       "telegram",
@@ -16,8 +16,8 @@
       "index",
       "inline"
     ],
-    "website": "https://github.com/MrMKN/PROFESSOR-BOT",
-    "repository": "https://github.com/MrMKN/PROFESSOR-BOT",
+    "website": "https://github.com/nandhuachu/Alan-Walker-",
+    "repository": "https://github.com/nandhuachu/Alan-Walker-",
     "env": {
         "BOT_TOKEN": {
             "description": "Your bot token.",
@@ -38,10 +38,6 @@
         "ADMINS": {
             "description": "Username or ID of Admin. Separate multiple Admins by space.",
             "required": true
-        },
-        "PICS": {
-            "description": "Add some telegraph link of pictures .",
-            "required": false
         },
         "LOG_CHANNEL": {
             "description": "Bot Logs,Give a channel id with -100xxxxxxx",
@@ -67,7 +63,7 @@
         },
         "DATABASE_NAME": {
             "description": "Name of the database in mongoDB.",
-            "value": "Cluster0",
+            "value": "1",
             "required": false
         },
         "COLLECTION_NAME": {
@@ -82,13 +78,8 @@
         },
         "IMDB": {
             "description": "Imdb, the view of information when making True/False",
-            "value": "True",
+            "value": "False",
             "required": false     
-        },
-        "IMDB_TEMPLATE": {
-            "description": "Custom IMDB Template",
-            "value": "<b>🏷 Title</b>: <a href={url}>{title}</a>\n<b>🎭 Genres</b>: {genres}\n<b>📆 Year</b>: <a href={url}/releaseinfo>{year}</a>\n<b>🌟 Rating</b>: <a href={url}/ratings>{rating}</a>\n<b>☀️ Languages</b> : <code>{languages}</code>\n<b>👨‍💼 Dɪʀᴇᴄᴛᴏʀ</b>: {director}\n<b>👨🏻‍🦱 Pʀᴏᴅᴜᴄᴇʀ</b>: {producer}\n<b>📑 wʀɪᴛᴇʀ</b>: {writer}\n<b>📀 RunTime</b>: {runtime} Minutes\n<b>📆 Release Info</b> : {release_date}\n<b>🎛 Countries</b> : <code>{countries}</code>\n<b>📓 Sᴛᴏʀy</b> : <code>{plot}</code>\n\n\n<b>🍀Requested by🍀</b> : {message.from_user.mention}",        
-            "required": false
         }, 
         "IMDB_DELET_TIME": {
             "description": "bot risult aouto delet time in second do to avoid group copyright issue. default is 300 ",
@@ -110,15 +101,18 @@
             "value": "**𝑱𝒐𝒊𝒏 𝑶𝒖𝒓 𝑴𝒐𝒗𝒊𝒆 𝑼𝒑𝒅𝒂𝒕𝒆𝒔 𝑪𝒉𝒂𝒏𝒏𝒆𝒍 𝑻𝒐 𝑼𝒔𝒆 𝑻𝒉𝒊𝒔 𝑩𝒐𝒕!**",
             "required": false
         },
-        "AUTH_GROUPS": {
-            "description": "Group Id. Only work a specific group/ your bot is public use? please just Skip this",
-            "value": "",
-            "required": false
-        },
         "WELCOM_PIC": {
             "description": "Welcome message pic (telegraph link)",
             "value": "",
             "required": false
+        },
+        "REQ_CHANNEL": {
+            "description": "",
+            "required": true
+        },
+        "DATABASE_URI": {
+            "description": "mongoDB URI.",
+            "required": true
         },
         "WELCOM_TEXT": {
             "description": "your group welcome text keyword({user} = joined use & {chat} = your chat name",
