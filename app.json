@@ -119,11 +119,6 @@
             "value": "Hai {user}\nwelcome to {chat}",
             "required": false
         },
-        "BUTTON_LOCK_TEXT": {
-            "description": "button lock text [User = {query}]",
-            "value": "⚠️ 𝙃𝙚𝙮 {query}! 𝙏𝙝𝙖𝙩'𝙨 𝙉𝙤𝙩 𝙁𝙤𝙧 𝙔𝙤𝙪. 𝙋𝙡𝙚𝙖𝙨𝙚 𝙍𝙚𝙦𝙪𝙚𝙨𝙩 𝙔𝙤𝙪𝙧 𝙊𝙬𝙣",
-            "required": false
-        },
         "PMFILTER": {
             "description": "PM AutoFilter. set True to on / False to off",
             "value": "True",
@@ -131,11 +126,6 @@
         },
         "G_FILTER": {
             "description": "GlobalFilter set True to on / False to off",
-            "value": "True",
-            "required": false
-        },
-        "BUTTON_LOCK": {
-            "description": "Button alert set True to on / False to off",
             "value": "True",
             "required": false
         },
