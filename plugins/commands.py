@@ -55,7 +55,7 @@ async def start(client, message):
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_chat_action(enums.ChatAction.TYPING)
         m=await message.reply_sticker("CAACAgUAAxkBAAEDt3tj4lOwtcgar7uOrxazy2oN5PUvQAACdwUAAiZTeVWBxQd7G8gr3B4E")
-        await asyncio.sleep(3)
+        await asyncio.sleep(1)
         await m.delete()
         await message.reply_video(
             video=random.choice(PICS),
@@ -87,7 +87,7 @@ async def start(client, message):
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_chat_action(enums.ChatAction.TYPING)
         m=await message.reply_sticker("CAACAgUAAxkBAAEDt3tj4lOwtcgar7uOrxazy2oN5PUvQAACdwUAAiZTeVWBxQd7G8gr3B4E")
-        await asyncio.sleep(3)
+        await asyncio.sleep(1)
         await m.delete()
         await message.reply_video(
             video=random.choice(PICS),
