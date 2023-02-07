@@ -4,7 +4,7 @@ from Script import script
 import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, make_inactive
 from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, SINGLE_BUTTON, PROTECT_CONTENT, \
-    SPELL_CHECK_REPLY, IMDB_TEMPLATE, IMDB_DELET_TIME, START_MESSAGE, PMFILTER, G_FILTER, REQ_CHANNEL
+    SPELL_CHECK_REPLY, IMDB_TEMPLATE, IMDB_DELET_TIME, START_MESSAGE, PMFILTER, G_FILTER, BUTTON_LOCK, BUTTON_LOCK_TEXT, REQ_CHANNEL
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters, enums 
@@ -519,8 +519,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         except Exception as e:
             await query.answer(f"⚠️ Error {e}", show_alert=True)
         
-    if query.data.startswith("file"):
-        ident, file_id = query.data.split("#")
+    if query.data.startswith("file"):        
+        ident, req, file_id = query.data.split("#")
+        if BUTTON_LOCK:
+            if int(req) not in [query.from_user.id, 0]:
+                return await query.answer(BUTTON_LOCK_TEXT.format(query=query.from_user.first_name), show_alert=True)
         files_ = await get_file_details(file_id)
         if not files_:
             return await query.answer('No such file exist.')
