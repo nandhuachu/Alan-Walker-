@@ -53,7 +53,7 @@ WELCOM_PIC = environ.get("WELCOM_PIC", "")
 WELCOM_TEXT = environ.get("WELCOM_TEXT", "Hai {user}\nwelcome to {chat}")
 PMFILTER = environ.get('PMFILTER', "True")
 G_FILTER = bool(environ.get("G_FILTER", True))
-BUTTON_LOCK = environ.get("BUTTON_LOCK", "False")
+BUTTON_LOCK = environ.get("BUTTON_LOCK", "True")
 
 # FSUB
 auth_channel = environ.get('AUTH_CHANNEL')
